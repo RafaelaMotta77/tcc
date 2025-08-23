@@ -1,334 +1,87 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abraço solidário</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-:root {
-    --vermelho-sport: #ff0000;
-    --preto-sport: #000000;
-    --branco-sport: #ffffff;
-    --cinza-claro: #f4f4f4;
-    --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.6;
-    background-color: var(--cinza-claro);
-    color: var(--preto-sport);
-}
-
-.container {
-    max-width: 1100px;
-    margin: auto;
-    overflow: hidden;
-    padding: 0 20px;
-}
-
-/* Header */
-header {
-    background: var(--preto-sport);
-    color: var(--branco-sport);
-    padding: 1rem 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo img {
-    height: 50px;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-}
-
-nav ul li {
-    margin-left: 20px;
-}
-
-nav ul a {
-    color: var(--branco-sport);
-    text-decoration: none;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: color 0.3s ease;
-}
-
-nav ul a:hover {
-    color: var(--vermelho-sport);
-}
-
-/* Seção de Destaque */
-.hero-section {
-    position: relative;
-    background: url('https://via.placeholder.com/1920x800') no-repeat center center/cover;
-    height: 600px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: var(--branco-sport);
-}
-
-.hero-section .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    padding: 0 20px;
-}
-
-.hero-content h1 {
-    font-size: 3.5rem;
-    margin-bottom: 10px;
-    text-shadow: var(--sombra);
-}
-
-.hero-content p {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-}
-
-.btn-principal {
-    background: var(--vermelho-sport);
-    color: var(--branco-sport);
-    padding: 12px 25px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.btn-principal:hover {
-    background: #cc0000;
-}
-
-/* Seção de Notícias (Carrossel) */
-.news-section {
-    padding: 40px 0;
-    background: var(--branco-sport);
-}
-
-.news-section h2 {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.news-carousel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.news-container {
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    gap: 20px;
-    padding: 10px;
-}
-
-.news-container::-webkit-scrollbar {
-    display: none;
-}
-
-.news-card {
-    min-width: 300px;
-    background: var(--branco-sport);
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: var(--sombra);
-}
-
-.news-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.news-card h3 {
-    padding: 10px 15px;
-    font-size: 1.2rem;
-}
-
-.news-card p {
-    padding: 0 15px 15px;
-    font-size: 0.9rem;
-    color: #555;
-}
-
-.carousel-btn {
-    background: var(--preto-sport);
-    color: var(--branco-sport);
-    border: none;
-    font-size: 2rem;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 50%;
-    margin: 0 10px;
-    transition: background-color 0.3s ease;
-}
-
-.carousel-btn:hover {
-    background: var(--vermelho-sport);
-}
-
-/* Seção Sócio Torcedor */
-.socio-section {
-    text-align: center;
-    padding: 50px 0;
-    background: var(--vermelho-sport);
-    color: var(--branco-sport);
-}
-
-.socio-section h2 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
-
-.socio-section p {
-    margin-bottom: 20px;
-}
-
-/* Footer */
-footer {
-    background: var(--preto-sport);
-    color: var(--branco-sport);
-    text-align: center;
-    padding: 20px 0;
-}
-
-footer a {
-    color: var(--branco-sport);
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-/* Media Queries (Responsividade) */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
-
-    nav ul {
-        justify-content: center;
-        margin-top: 10px;
-    }
-}
-    </style>
-</head>
-<body>
-
-    <header>
-        <div class="container">
-            <div class="logo">
-                <img src="https://via.placeholder.com/100x50" alt="Logo do Abraço solidário">
+    <html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Abraço Solidário</title>
+        <link rel="stylesheet" href="style.css">
+    
+    </head>
+    <body>
+        <div class="header">
+            <div class="logo">Abraço <br> Solidário</div>
+            <div class="search-bar">
+                <input type="text" placeholder="Procurar instituição">
+                <button>Procurar</button>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#">Início</a></li>
-                    <li><a href="#">Sobre nós</a></li>
-                    <li><a href="#">Instituições</a></li>
-                    <li><a href="#">Seja doador</a></li>
-                </ul>
-            </nav>
+            <div class="icons">
+                <img src="imagens/perfil1.png" alt="Usuario de login">
+            </div>
         </div>
-    </header>
-
-    <main>
-        <section class="hero-section">
-            <div class="overlay"></div>
-            <div class="hero-content">
-                <h1>Leão na Libertadores!</h1>
-                <p>O Sport garante vaga na fase de grupos após vitória histórica.</p>
-                <a href="#" class="btn-principal">Leia mais</a>
-            </div>
-        </section>
-
-        <section class="news-section">
-            <div class="container">
-                <h2>Últimas Notícias</h2>
-                <div class="news-carousel">
-                    <button id="prev-btn" class="carousel-btn">&lt;</button>
-                    <div id="news-container" class="news-container">
-                        <div class="news-card">
-                            <img src="https://via.placeholder.com/300x200" alt="Notícia 1">
-                            <h3>Vitória sobre o rival em casa</h3>
-                            <p>O Sport venceu a partida e segue na liderança.</p>
-                        </div>
-                        <div class="news-card">
-                            <img src="https://via.placeholder.com/300x200" alt="Notícia 2">
-                            <h3>Leão contrata novo atacante</h3>
-                            <p>O clube anuncia reforço para o setor ofensivo.</p>
-                        </div>
-                        <div class="news-card">
-                            <img src="https://via.placeholder.com/300x200" alt="Notícia 3">
-                            <h3>Ingressos para o próximo jogo</h3>
-                            <p>Começa a venda de entradas para a partida de domingo.</p>
-                        </div>
-                        <div class="news-card">
-                            <img src="https://via.placeholder.com/300x200" alt="Notícia 4">
-                            <h3>Entrevista exclusiva com o técnico</h3>
-                            <p>Técnico fala sobre o desempenho do time.</p>
-                        </div>
-                    </div>
-                    <button id="next-btn" class="carousel-btn">&gt;</button>
+        
+        <div class="nav-bar">
+            <div class="dropdown">
+                <a href="#">A PLATAFORMA</a>
+                <div class="dropdown-content">
+                    <a href="sobrenos.html">Nosso trabalho</a>
+                    <a href="#">Equipe</a>
                 </div>
             </div>
-        </section>
-    </main>
+            <a href="#instituicoes">INSTITUIÇÕES</a>
+            <a href="#">CONTACTE-NOS</a>
+        </div>
+        <div class="nosso-trabalho">
+            <img src="imagens/Abraço Solidário.png" alt="">
+        </div>
+        <div id="instituicoes" class="it">
+            <h2>INSTITUIÇÕES</h2>
+        </div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Sport Club do Recife. Todos os direitos reservados.</p>
-            <div class="social-links">
-                <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Twitter</a>
+      
+    <div class="quadrado-container">
+        <div class="quadrado">
+            <div class="quadrado-item">
+                <a href="ptfeliz.html" target="_blank">
+            <img src="imagens/cachorro.png" alt="Patas Felizes ">
+            <h3>Patas felizes</h3>
+            <p>Somos o Instituto Patas Felizes, um refúgio para animais abandonados e vítimas de maus-tratos.</p>
+        </div>
+        </div>
+
+        <div class="quadrado">
+            <div class="quadrado-item">
+            <img src="imagens/casatodos.png" alt="Casa de Todos">
+            <h3>Casa de todos</h3>
+            <p>Somos o Instituto Casa de Todos, um espaço de reabilitação para quem busca um novo começo com dignidade e apoio.</p>
+        </div>
+        </div>
+
+        <div class="quadrado">
+            <div class="quadrado-item">
+            <img src="imagens/florescer.png" alt="">
+            <h3>instituto florescer</h3>
+            <p>Somos o Instituto Florescer, um amparo para aqueles em situação de vulnerabilidade, oferecendo acolhimento,
+                apoio e a chance de reconstruir suas vidas.</p>
             </div>
         </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-    const newsContainer = document.getElementById('news-container');
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-
-    const scrollAmount = 320;
-
-    prevBtn.addEventListener('click', () => {
-        newsContainer.scrollLeft -= scrollAmount;
-    });
-
-    nextBtn.addEventListener('click', () => {
-        newsContainer.scrollLeft += scrollAmount;
-    });
-});
-    </script>
-</body>
-</html>
+        <div class="quadrado">
+            <div class="quadrado-item">
+            <img src="imagens/instituicao02.png" alt="">
+            <h3>Recanto da sabedoria</h3>
+            <p>Somos o Recanto da Sabedoria, um lar acolhedor para idosos que merecem todo o carinho e respeito.</p>
+        </div>
+        </div>
+        <div class="quadrado">
+            <div class="quadrado-item">
+            <img src="imagens/sonhocolorido.png" alt="Sonho Colorido">
+            <h3>Sonho colorido</h3>
+            <p>Somos o Instituto Sonho Colorido, um farol de esperança para crianças em comunidades carentes.</p>
+            </div>
+        </div>
+    </div>
+      <footer>
+        <div class="logo2">Abraço <br> Solidário</div>
+      </footer>
+      <script src="script.js"></script>
+    </body>
+    </html>
