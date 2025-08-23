@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+    <html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Abraço Solidário</title>
+    </head>
+    <style>
+        
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    padding: 0;
+  }
+  
+  .header {
+    background-color: #9fccc3;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .logo {
+    font-family: initial;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: left; 
+    padding-left: 20px;
+    color: #ffffff;
+    text-shadow: 3px 3px 5px rgba(145, 140, 140, 0.5); 
+  }
+  
+  .search-bar {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-bar select,
+  .search-bar input {
+    padding: 5px;
+    margin-right: 5px;
+  }
+  
+  .search-bar button {
+    padding: 5px 10px;
+    background-color: #73baac;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .icons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .icons img {
+    margin-left: 15px;
+    cursor: pointer;
+    width: 50px; 
+    height: 40px;
+  }
+  
+  .nav-bar {
+    background-color: #9fccc3;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .nav-bar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+  }
+  
+  .nav-bar a:hover {
+    background-color: #9fccc3;
+    border-radius: 5px;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #9fccc3;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 100%; 
+    left: 0; 
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown-content a {
+    color: white;
+    padding: 10px;
+    display: block;
+    text-decoration: none;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #73baac;
+  }
+  
+  .nosso-trabalho img {
+    width: 99%; 
+    height: 550px;
+    display: block;
+    padding: 5px;
+    margin: 10px auto; 
+    border-radius: 15px;
+    object-fit: cover; 
+    box-shadow: 3px 3px 5px #918c8c80;
+  }
+  
+  footer{
+    font-family: initial;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center; 
+    padding-left: 20px;
+    color: #ffffff;
+    text-shadow: 3px 3px 5px rgba(145, 140, 140, 0.5); 
+    background-color: #9fccc3;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  h2{
+    text-align: center;
+    margin: 35px;
+    font-family: initial;
+    font-size: 35px;
+    font-weight: bold;
+    color: #78b3a7;
+    text-shadow: 3px 3px 5px rgba(98, 95, 95, 0.5); 
+  }
+  .texto{
+    float: left;
+    margin-left: 40px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+    line-height: 1.6;
+  }
+    </style>
+    <body>
+        <div class="header">
+            <div class="logo">Abraço <br> Solidário</div>
+            <div class="search-bar">
+                <input type="text" placeholder="Procurar instituição">
+                <button>Procurar</button>
+            </div>
+            <div class="icons">
+                <img src="imagens/perfil1.png" alt="Usuario de login">
+            </div>
+        </div>
+        
+        <div class="nav-bar">
+            <div class="dropdown">
+                <a href="#">A PLATAFORMA</a>
+                <div class="dropdown-content">
+                    <a href="sobrenos.html">Nosso trabalho</a>
+                    <a href="#">Equipe</a>
+                </div>
+            </div>
+            <a href="#instituicoes">INSTITUIÇÕES</a>
+            <a href="#">CONTACTE-NOS</a>
+        </div>
+        <h2>Instituição Patas Felizes</h2>
+        <div class="texto">Somos o Instituto Patas Felizes, um refúgio para animais abandonados e vítimas de maus-tratos.<br>
+            Avenida da Acolhida, 777, Bairro Fraterno, Cidade do Amor, SP. CEP: 32109-876. 
+        </div>
+        <div class="foto">
+            <img src="imagens/cachorro.png">
+        </div>
+        <footer>
+            <div class="logo2">Abraço <br> Solidário</div>
+        </footer>
+</body>
+</html>

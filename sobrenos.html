@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre nós</title>
+</head>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #f4f4f4;
+  padding: 0;
+}
+
+.header {
+  background-color: #9fccc3;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: initial;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: left; 
+  padding-left: 20px;
+  color: #ffffff;
+  text-shadow: 3px 3px 5px rgba(145, 140, 140, 0.5); 
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar select,
+.search-bar input {
+  padding: 5px;
+  margin-right: 5px;
+}
+
+.search-bar button {
+  padding: 5px 10px;
+  background-color: #73baac;
+  border: none;
+  cursor: pointer;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+}
+
+.icons img {
+  margin-left: 15px;
+  cursor: pointer;
+  width: 50px; 
+  height: 40px;
+}
+
+.nav-bar {
+  background-color: #9fccc3;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav-bar a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+}
+
+.nav-bar a:hover {
+  background-color: #9fccc3;
+  border-radius: 5px;
+}
+
+.dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #9fccc3;
+  min-width: 150px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  z-index: 1;
+  top: 100%; 
+  left: 0; 
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+.dropdown-content a {
+  color: white;
+  padding: 10px;
+  display: block;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #73baac;
+}
+
+h2 {
+  font-family: initial;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+p {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: large;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  max-width: 80%;
+  margin: 20px auto;
+  line-height: 1.6;
+}
+</style>
+<body>
+    <div class="header">
+        <a href="index.html">Abraço <br> Solidário</a>
+        <div class="search-bar">
+            <input type="text" placeholder="Procurar instituição">
+            <button>Procurar</button>
+        </div>
+        <div class="icons">
+            <img src="imagens/perfil1.png" alt="Usuario de login">
+        </div>
+    </div>
+    
+    <div class="nav-bar">
+        <div class="dropdown">
+            <a href="#">A PLATAFORMA</a>
+            <div class="dropdown-content">
+                <a href="#">Nosso trabalho</a>
+                <a href="#">Equipe</a>
+            </div>
+        </div>
+        
+        <a href="index.html">INSTITUIÇÕES</a>
+        <a href="#">CONTACTE-NOS</a>
+    </div>
+    <br>
+    <h2>Abraço Solidário – Conectando Corações e Ações</h2>
+    <p>O Abraço Solidário é uma plataforma digital que busca unir pessoas interessadas em ajudar com instituições de caridade que precisam de apoio. Com um ambiente intuitivo e acessível, a página web apresenta diversas organizações que atuam em diferentes áreas, como assistência social, saúde, educação e combate à fome.
+        A finalidade do projeto é facilitar o acesso às doações, permitindo que qualquer pessoa encontre e contribua com instituições que compartilham valores e causas importantes. Além disso, a plataforma ajuda na divulgação das organizações, conectando doadores, voluntários e pessoas em busca de auxílio.
+        O site conta com um sistema de busca simplificado, onde é possível filtrar instituições por região, tipo de serviço e necessidades específicas. Para aqueles que desejam fazer doações financeiras ou materiais, a plataforma oferece informações detalhadas sobre como e onde ajudar, tornando o processo mais ágil e transparente.
+        Ao centralizar essas iniciativas em um só lugar, o Abraço Solidário cria uma ponte entre quem deseja ajudar e quem precisa de apoio, tornando a solidariedade mais acessível e eficaz.
+    </p>
+</body>
+</html>
