@@ -1,87 +1,97 @@
 <!DOCTYPE html>
-    <html lang="pt">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Abraço Solidário</title>
-        <link rel="stylesheet" href="style.css">
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Abraço Solidário</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="banner">
+        <img src="img/Abraço Solidário.png" alt="Banner de doação">
     
-    </head>
-    <body>
-        <div class="header">
-            <div class="logo">Abraço <br> Solidário</div>
-            <div class="search-bar">
-                <input type="text" placeholder="Procurar instituição">
-                <button>Procurar</button>
-            </div>
-            <div class="icons">
-                <img src="imagens/perfil1.png" alt="Usuario de login">
-            </div>
+        <div class="topo">
+          <h1 class="logo">Abraço Solidário</h1>
+          <nav class="menu">
+            <ul>
+              <li><a href="#">Nosso trabalho</a></li>
+              <li><a href="#">Doar</a></li>
+              <li><a href="#">Instituições</a></li>
+              <li><a href="#">Contato</a></li>
+            </ul>
+          </nav>
         </div>
-        
-        <div class="nav-bar">
-            <div class="dropdown">
-                <a href="#">A PLATAFORMA</a>
-                <div class="dropdown-content">
-                    <a href="sobrenos.html">Nosso trabalho</a>
-                    <a href="#">Equipe</a>
-                </div>
-            </div>
-            <a href="#instituicoes">INSTITUIÇÕES</a>
-            <a href="#">CONTACTE-NOS</a>
-        </div>
-        <div class="nosso-trabalho">
-            <img src="imagens/Abraço Solidário.png" alt="">
-        </div>
-        <div id="instituicoes" class="it">
-            <h2>INSTITUIÇÕES</h2>
-        </div>
+  </header>
 
-      
-    <div class="quadrado-container">
-        <div class="quadrado">
-            <div class="quadrado-item">
-                <a href="ptfeliz.html" target="_blank">
-            <img src="imagens/cachorro.png" alt="Patas Felizes ">
-            <h3>Patas felizes</h3>
-            <p>Somos o Instituto Patas Felizes, um refúgio para animais abandonados e vítimas de maus-tratos.</p>
-        </div>
-        </div>
+  
+  <section id="historia" class="Nosso-trabalho">
+    <h2>Um pouco do nosso trabalho</h2>
+    <p>Em 2016, Rafael K. Naves criou a Duckbill em Franca/SP. Depois de 42 tentativas, nasceu o cookie perfeito. Hoje somos a maior rede de cookies do Brasil.</p>
+  </section>
 
-        <div class="quadrado">
-            <div class="quadrado-item">
-            <img src="imagens/casatodos.png" alt="Casa de Todos">
-            <h3>Casa de todos</h3>
-            <p>Somos o Instituto Casa de Todos, um espaço de reabilitação para quem busca um novo começo com dignidade e apoio.</p>
-        </div>
-        </div>
-
-        <div class="quadrado">
-            <div class="quadrado-item">
-            <img src="imagens/florescer.png" alt="">
-            <h3>instituto florescer</h3>
-            <p>Somos o Instituto Florescer, um amparo para aqueles em situação de vulnerabilidade, oferecendo acolhimento,
-                apoio e a chance de reconstruir suas vidas.</p>
-            </div>
-        </div>
-        <div class="quadrado">
-            <div class="quadrado-item">
-            <img src="imagens/instituicao02.png" alt="">
-            <h3>Recanto da sabedoria</h3>
-            <p>Somos o Recanto da Sabedoria, um lar acolhedor para idosos que merecem todo o carinho e respeito.</p>
-        </div>
-        </div>
-        <div class="quadrado">
-            <div class="quadrado-item">
-            <img src="imagens/sonhocolorido.png" alt="Sonho Colorido">
-            <h3>Sonho colorido</h3>
-            <p>Somos o Instituto Sonho Colorido, um farol de esperança para crianças em comunidades carentes.</p>
-            </div>
-        </div>
+  <section id="Instituições" class="produtos">
+    <h2>Instituições</h2>
+    <div class="card">
+      <img src="" alt="Instituição ">
+      <h3>Cookie de Pistache</h3>
+      <p>Gotas de chocolate branco, massa amanteigada e crocância irresistível.</p>
     </div>
-      <footer>
-        <div class="logo2">Abraço <br> Solidário</div>
-      </footer>
-      <script src="script.js"></script>
-    </body>
-    </html>
+    <div class="card">
+      <img src="" alt="Instituição">
+      <h3>Instituição</h3>
+      <p>Recheio cremoso de Nutella com massa de cacau premium.</p>
+    </div>
+    <div class="card">
+        <img src="" alt="Instituição">
+        <h3>Instituição</h3>
+        <p>Recheio cremoso de Nutella com massa de cacau premium.</p>
+      </div>
+      <div class="card">
+        <img src="" alt="Instituição">
+        <h3>Instituição</h3>
+        <p>Recheio cremoso de Nutella com massa de cacau premium.</p>
+      </div>
+      <div class="card">
+        <img src="" alt="Instituição">
+        <h3>Instituição</h3>
+        <p>Recheio cremoso de Nutella com massa de cacau premium.</p>
+      </div>
+      <div class="card">
+        <img src="" alt="Instituição">
+        <h3>Instituição</h3>
+        <p>Recheio cremoso de Nutella com massa de cacau premium.</p>
+      </div>
+  </section>
+
+  <section id="contato" class="contato">
+    <h2>Fale Conosco</h2>
+    <form>
+      <input type="text" placeholder="Seu nome" required>
+      <input type="email" placeholder="Seu e-mail" required>
+      <textarea placeholder="Sua mensagem" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 Abraço Solidário. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+
+
+// 🧃 Animação de entrada para cards de produto
+// const cards = document.querySelectorAll('.card');
+// const observer = new IntersectionObserver((entries) => {
+//   entries.forEach(entry => {
+//     if (entry.isIntersecting) {
+//       entry.target.classList.add('show');
+//     }
+//   });
+// }, { threshold: 0.3 });
+
+// cards.forEach(card => observer.observe(card));
+</script>
+</body>
+</html>
