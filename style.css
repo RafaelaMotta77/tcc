@@ -63,9 +63,14 @@ nav a:hover::after {
   width: 100%;
 }
 
-.produtos, .Nosso-trabalho, .contato {
+.produtos {
+ background-color: #9fccc3;
+}
+
+.Nosso-trabalho, .contato {
   padding: 60px 20px;
   text-align: center;
+  background-color: #f4f4f4;
 }
 
 form input, form textarea {
@@ -94,7 +99,6 @@ footer {
   padding: 20px;
 }
 
-/* 🧁 Menu estiloso */
 nav ul {
   list-style: none;
   display: flex;
