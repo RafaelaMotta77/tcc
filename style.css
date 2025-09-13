@@ -1,9 +1,29 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
+  /* This centers the entire content of the body, including the section. */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
+h2 {
+  text-align: center;
+  width: 100%; 
+}
+
+.produtos {
+  /* This container holds the cards and needs to be a flex container. */
+  display: flex;
+  flex-wrap: wrap; /* Allows cards to wrap to the next line. */
+  justify-content: center; /* This is the key to centering the cards. */
+  gap: 20px; /* Adds space between the cards. */
+}
+
+/* You can also adjust the card styles to ensure they look good when centered. */
+.card {
+  width: 300px; /* Example width. Adjust as needed. */
+  /* Add other card styles like background, padding, box-shadow, etc. */
+}
 .banner {
   position: relative;
   width: 100%;
