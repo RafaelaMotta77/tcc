@@ -5,11 +5,11 @@
 
 body {
   font-family: 'Times New Roman', Times, serif;
-  margin: 0;
   background-color: #f4f4f4;
-  padding: 0;
   width: 100%;
   overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 /* Estilos para Títulos */
@@ -197,30 +197,34 @@ h2 {
 }
 
 .card-link {
-  text-decoration: none; /* Removes the underline */
-  color: black;          /* Sets the text color to black */
+  text-decoration: none;
+  color: black;
 }
 
-/* Optional: Add a hover effect for better user experience */
 .card-link:hover {
-  color: #333; /* Slightly darker grey on hover, or any other effect */
-  text-decoration: underline; /* You could add underline back on hover, or a subtle change */
+  color: #333;
+  text-decoration: underline;
 }
 
-/* Also ensure the text inside the card is black by default if it's not already */
 .card h3,
 .card p {
   color: black;
 }
+
 .card {
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 300px;
+  height: 350px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .card:hover {
@@ -230,6 +234,8 @@ h2 {
 
 .card img {
   width: 100%;
+  height: 180px;
+  object-fit: cover;
   border-radius: 10px;
   transition: transform 0.3s ease;
 }
@@ -283,12 +289,12 @@ h2 {
   fill: #f4f4f4;
 }
 
-/* Estilos do Rodapé */
 footer {
   background-color: #9fccc3;
   color: white;
   text-align: center;
-  padding: 25px;
+  padding: 25px 0; /* Remova o padding extra no topo ou embaixo */
+  margin-top: 0; /* Remova a margem superior */
   width: 100%;
   font-family: initial;
   font-size: 24px;
@@ -298,3 +304,4 @@ footer {
   align-items: center;
   justify-content: center;
 }
+  
