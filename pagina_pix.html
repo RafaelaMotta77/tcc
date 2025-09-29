@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIX - Finalizar Doação</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        h1 {
+            color: #1a7a1a; /* Verde PIX */
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .info-box {
+            background-color: #e6ffe6;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .info-box p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        .info-box strong {
+            color: #1a7a1a;
+        }
+        #qrcode {
+            margin: 25px auto;
+            width: 200px;
+            height: 200px;
+            border: 5px solid #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Pague com PIX</h1>
+        <p>Use o QR Code abaixo para finalizar sua doação.</p>
+
+        <div class="info-box">
+            <p>Destino: <strong id="instituicao-destino"></strong></p>
+            <p>Valor: <strong id="valor-doacao"></strong></p>
+        </div>
+
+        <div id="qrcode"></div>
+
+        <p><small>Este QR Code é simulado, mas representa a forma de pagamento PIX na vida real.</small></p>
+        <button onclick="window.location.href='index.html'" style="padding: 10px 20px; background-color: #78b3a7; color: white; border: none; border-radius: 5px; cursor: pointer;">Voltar ao Início</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Obter dados da URL (Query String)
+            const urlParams = new URLSearchParams(window.location.search);
+            const instituicao = urlParams.get('instituicao');
+            const valor = urlParams.get('valor');
+
+            // 2. Exibir as informações na página
+            document.getElementById('instituicao-destino').textContent = instituicao || 'Instituição Não Definida';
+            
+            let valorFormatado = "R$ 0,00";
+            if (valor) {
+                const valorNumerico = parseFloat(valor).toFixed(2).replace('.', ',');
+                valorFormatado = `R$ ${valorNumerico}`;
+            }
+            document.getElementById('valor-doacao').textContent = valorFormatado;
+
+
+            // 3. Gerar o "Código PIX" Aleatório para o QR Code
+            // Em uma aplicação real, aqui você usaria o "Pix Copia e Cola" ou o payload do PIX.
+            // Aqui, geramos uma string aleatória (simulada) para o QR Code.
+            const codigoPixAleatorio = `Doacao_${instituicao}_${valor}_${Math.random().toString(36).substring(2, 15)}_${new Date().getTime()}`;
+
+            // 4. Gerar o QR Code
+            if (document.getElementById("qrcode")) {
+                new QRCode(document.getElementById("qrcode"), {
+                    text: codigoPixAleatorio,
+                    width: 200,
+                    height: 200,
+                    colorDark : "#000000",
+                    colorLight : "#ffffff",
+                    correctLevel : QRCode.CorrectLevel.H
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

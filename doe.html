@@ -1,28 +1,403 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="Style/doe.css">
+    <title>Abraço Solidário</title>
 </head>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Times New Roman', Times, serif;
+        background-color: #f4f4f4;
+        width: 100%;
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+    }
+
+    h2 {
+        text-align: center;
+        margin: 35px;
+        font-family: initial;
+        font-size: 35px;
+        font-weight: bold;
+        color: #78b3a7;
+        text-shadow: 3px 3px 5px rgba(98, 95, 95, 0.5);
+        width: 100%;
+    }
+
+    .banner {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        text-align: center;
+        overflow: hidden;
+        height: 15vh;
+    }
+
+    .banner img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .topo {
+        position: absolute;
+        top: 20px;
+        left: 30px;
+        right: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 2;
+    }
+
+    .logo {
+        font-family: initial;
+        font-size: 24px;
+        font-weight: bold;
+        color: #ffffff;
+        text-shadow: 3px 3px 5px rgba(145, 140, 140, 0.5);
+        margin: 0;
+    }
+
+    .menu ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 30px;
+    }
+
+    .menu a {
+        text-decoration: none;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        position: relative;
+        transition: color 0.3s ease;
+    }
+
+    .menu a::after {
+        content: '';
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: #9fccc3;
+        transition: width 0.3s ease;
+    }
+
+    .menu a:hover {
+        color: #9fccc3;
+    }
+
+    .menu a:hover::after {
+        width: 100%;
+    }
+
+    .intro-section {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        padding: 80px 50px;
+        gap: 60px;
+        background-color: #ffffff;
+        margin: 40px auto;
+        max-width: 1200px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .intro-content,
+    .donation-form {
+        width: 48%; /* Definindo a largura para 48% para garantir que fiquem lado a lado */
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .intro-content h2 {
+        color: #78b3a7;
+        font-size: 38px;
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    .intro-content p {
+        font-size: 18px;
+        line-height: 1.8;
+        color: #555;
+        margin-bottom: 25px;
+        text-align: left;
+    }
+
+    .donation-form h3 {
+        color: #78b3a7;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .options {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .options button {
+        background-color: #f4f4f4;
+        border: 1px solid #ccc;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .options button.selected {
+        background-color: #007bff;
+        color: white;
+        border: 1px solid #007bff;
+    }
+
+    .radio-group {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .radio-group label {
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    input[type="tel"],
+    input[type="number"],
+    select {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+    }
+
+    .form-section {
+        margin-bottom: 20px;
+    }
+
+    .form-section label {
+        display: block;
+        font-size: 16px;
+        margin-bottom: 8px;
+        color: #555;
+    }
+
+    .footer {
+        font-size: 14px;
+        color: #777;
+        text-align: center;
+    }
+
+    .footer a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    .footer a:hover {
+        text-decoration: underline;
+    }
+
+    .submit-btn {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 15px;
+        width: 100%;
+        font-size: 18px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .submit-btn:hover {
+        background-color: #0056b3;
+    }
+
+    @media (max-width: 900px) {
+        .intro-section {
+            flex-direction: column;
+            padding: 40px 20px;
+            gap: 30px;
+        }
+
+        .intro-content,
+        .donation-form {
+            width: 100%; /* Quando em telas menores, o formulário e o texto ocupam toda a largura */
+            margin: 0;
+        }
+
+        .intro-content h2 {
+            text-align: center;
+        }
+    }
+</style>
+
 <body>
-    <div class="banner">
-        <img src="img/banner/1 - Copia.png" alt="Banner de doação">
-  
-        <!--menu-->
-        <div class="topo">
-          <h1 class="logo">Abraço Solidário</h1>
-          <nav class="menu">
-            <ul>
-              <li><a href="#intro-section">Nosso trabalho</a></li>
-              <li><a href="#intro-section">Doar</a></li>
-              <li><a href="#Instituições">Instituições</a></li>
-              <li><a href="#">Contato</a></li>
-              <li><a href="#">Login</a></li>
-            </ul>
-          </nav>
+
+    <header>
+        <div class="banner">
+            <img src="img/banner/menor.png" alt="Banner de doação">
+
+            <div class="topo">
+                <h1 class="logo">Abraço Solidário</h1>
+                <nav class="menu">
+                    <ul>
+                        <li><a href="#intro-section">Nosso trabalho</a></li>
+                        <li><a href="#intro-section">Doar</a></li>
+                        <li><a href="#Instituições">Instituições</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Login</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-    </div>
+    </header>
+
+    <main>
+        <section id="intro-section" class="intro-section">
+            <!-- Texto "Porque DOAR?" -->
+            <div class="intro-content">
+                <h2>Porque DOAR?</h2>
+                <p>Doar é mais do que dar algo que você não precisa; é ajudar de verdade.
+                    Quando você doa, leva esperança a quem mais precisa. É um gesto simples que faz uma enorme diferença na vida de outra pessoa e de toda a comunidade.</p>
+            </div>
+
+            <!-- Formulário de Doação -->
+            <div class="donation-form">
+                <h3>Faça sua Doação</h3>
+
+                <!-- Dados pessoais -->
+                <div class="form-section">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="nome" required>
+
+                    <label for="sobrenome">Sobrenome</label>
+                    <input type="text" id="sobrenome" name="sobrenome" required>
+
+                    <label for="cpf">CPF</label>
+                    <input type="text" id="cpf" name="cpf" required>
+
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" id="telefone" name="telefone" required>
+
+                    <label for="sexo">Sexo</label>
+                    <select id="sexo" name="sexo" required>
+                        <option value="masculino">Masculino</option>
+                        <option value="feminino">Feminino</option>
+                        <option value="outro">Outro</option>
+                    </select>
+
+                    <label for="data-nascimento">Data de Nascimento</label>
+                    <input type="date" id="data-nascimento" name="data-nascimento" required>
+                </div>
+
+                <label for="instituicao">Instituição</label>
+                <select id="instituicao" name="instituicao" required>
+                  <option value="Outro">Outro</option>
+                    <option value="Patas Felizes">Patas Felizes</option>
+                    <option value="Casa de Todos">Casa de Todos</option>
+                    <option value="Florescer">Florescer</option>
+                    <option value="Recanto da Sabedoria">Recanto da Sabedoria</option>
+                    <option value="Sonho Colorido">Sonho Colorido</option>
+                </select>
+
+                <!-- Valor da doação -->
+                <label for="tipo-doacao">Qual sua doação</label>
+<select id="tipo-doacao" name="tipo-doacao" required>
+    <option value="" disabled selected>Selecione o tipo de doação</option>
+    <option value="Dinheiro">Dinheiro (PIX)</option> 
+    <option value="Roupas">Roupas</option>
+    <option value="Alimentos">Alimentos</option>
+    <option value="Racoes">Rações</option>
+    <option value="Higiene pessoal">Higiene pessoal</option>
+    <option value="Brinquedos">Brinquedos</option>
+    <option value="Calcados">Calçados</option>
+    <option value="Roupa de cama">Roupa de cama</option>
+    <option value="Outro_Item">Outro Item</option>
+</select>
+
+<div id="campo-valor-doacao" style="display:none;">
+    <label for="valor-doacao">Valor da doação (R$)</label>
+    <input type="number" id="valor-doacao" name="valor-doacao" min="1" step="0.01" placeholder="Ex: 50.00">
+</div>
+
+<button type="submit" class="submit-btn" id="btn-doar">Doar Agora</button>
+
+                <!-- Política de privacidade -->
+                <div class="footer">
+                  <p>O campo "Qual sua doação" é para você nos dizer o que vai doar (Roupas, Alimentos, etc.). Se o seu item não estiver listado, escolha "Outro".</p>
+                  <p>As opções de nomes que aparecem (como "Patas Felizes" ou "Casa de Todos") são as instituições para onde o aplicativo vai encaminhar sua doação. Se você não souber para quem doar, não se preocupe: basta selecionar o seu item e o aplicativo automaticamente já escolhe uma instituição que precisa daquele tipo de ajuda.</p>
+                    <p>Seus dados pessoais serão necessários para processar a doação e melhorar sua experiência no site. Todos os
+                        propósitos estão detalhados na <a href="#">política de privacidade</a>.</p>
+                    <p><small>Ambiente seguro. Instituição isenta de impostos.</small></p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          const selectTipoDoacao = document.getElementById('tipo-doacao');
+          const campoValorDoacao = document.getElementById('campo-valor-doacao');
+          const selectInstituicaoDestino = document.getElementById('instituicao-destino'); // Assumindo que você renomeou o select de Instituição
+          const form = document.querySelector('.donation-form'); // O form que você criou na resposta anterior
+  
+          // 1. Mostrar/Esconder o campo de valor
+          selectTipoDoacao.addEventListener('change', function() {
+              if (this.value === 'Dinheiro') {
+                  campoValorDoacao.style.display = 'block';
+                  document.getElementById('valor-doacao').setAttribute('required', 'required');
+              } else {
+                  campoValorDoacao.style.display = 'none';
+                  document.getElementById('valor-doacao').removeAttribute('required');
+              }
+          });
+  
+          // 2. Interceptar o envio do formulário
+          form.addEventListener('submit', function(event) {
+              const tipoDoacao = selectTipoDoacao.value;
+  
+              if (tipoDoacao === 'Dinheiro') {
+                  event.preventDefault(); // Impede o envio padrão
+  
+                  const valor = document.getElementById('valor-doacao').value;
+                  const instituicao = selectInstituicaoDestino.options[selectInstituicaoDestino.selectedIndex].text;
+                  
+                  if (valor && parseFloat(valor) > 0) {
+                      // Redireciona para a página PIX, passando os dados na URL
+                      window.location.href = `pagina_pix.html?instituicao=${encodeURIComponent(instituicao)}&valor=${encodeURIComponent(valor)}`;
+                  } else {
+                      alert('Por favor, informe um valor válido para a doação em dinheiro.');
+                  }
+  
+              } 
+              // Se não for "Dinheiro", o formulário segue o action="sua_pagina_de_pagamento.html" definido anteriormente.
+          });
+      });
+  </script>
 </body>
 </html>
