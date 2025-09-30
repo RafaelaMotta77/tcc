@@ -6,15 +6,112 @@
     <title>PIX - Finalizar Doação</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Times New Roman', Times, serif;
             background-color: #f4f4f4;
+            width: 100%;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            margin: 35px;
+            font-family: initial;
+            font-size: 35px;
+            font-weight: bold;
+            color: #78b3a7;
+            text-shadow: 3px 3px 5px rgba(98, 95, 95, 0.5);
+            width: 100%;
+        }
+
+        .banner {
+            position: relative;
+            width: 100%;
+            text-align: center;
+            overflow: hidden;
+            height: 15vh;
+        }
+
+        .banner img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .topo {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            right: 30px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            min-height: 100vh;
+            z-index: 2;
+        }
+
+        .logo {
+            font-family: initial;
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffffff;
+            text-shadow: 3px 3px 5px rgba(145, 140, 140, 0.5);
             margin: 0;
         }
+
+        .menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 30px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .menu a::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #9fccc3;
+            transition: width 0.3s ease;
+        }
+
+        .menu a:hover {
+            color: #9fccc3;
+        }
+
+        .menu a:hover::after {
+            width: 100%;
+        }
+        
+        /* NOVO ESTILO: Container para Centralizar o Bloco PIX */
+        .pix-content-wrapper {
+            display: flex;
+            justify-content: center; /* Centraliza horizontalmente */
+            align-items: center; /* Centraliza verticalmente */
+            min-height: calc(100vh - 15vh); /* Altura da tela menos a altura do banner */
+            width: 100%;
+            padding: 30px 0;
+        }
+
+        /* O container PIX em si */
         .container {
             background-color: white;
             padding: 30px;
@@ -23,9 +120,11 @@
             text-align: center;
             max-width: 400px;
             width: 90%;
+            /* Remover a centralização do body se existisse e aplicar aqui */
         }
+        
         h1 {
-            color: #1a7a1a; /* Verde PIX */
+            color: #74c8b7; 
             font-size: 24px;
             margin-bottom: 20px;
         }
@@ -41,42 +140,172 @@
             font-size: 16px;
         }
         .info-box strong {
-            color: #1a7a1a;
+            color: #000000;
         }
         #qrcode {
-            margin: 25px auto;
+            margin: 25px auto 10px; 
             width: 200px;
             height: 200px;
             border: 5px solid #fff;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
+        /* Estilos do Cronômetro */
+        #cronometro-pix {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #5fb6a4; 
+            margin-bottom: 15px; 
+            animation: pulse 1.5s infinite; 
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.03); opacity: 0.95; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        /* Estilos da Chave PIX e Cópia */
+        .pix-key-container {
+            display: flex;
+            margin-bottom: 25px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        #chave-pix-copia {
+            flex-grow: 1;
+            padding: 10px;
+            background-color: #fff;
+            color: #333;
+            font-weight: bold;
+            text-align: left;
+            font-size: 0.9em;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        .copy-button {
+            background-color: #78b3a7; /* Cor do botão Copiar */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .copy-button:hover {
+            background-color: #609d93;
+        }
+        .copy-button:active {
+            background-color: #0d3b0d;
+        }
+        .botao-principal {
+            padding: 10px 20px; 
+            background-color: #78b3a7; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 15px; 
+        }
+        .botao-principal:hover {
+            background-color: #609d93;
+        }
     </style>
 </head>
 <body>
-
-    <div class="container">
-        <h1>Pague com PIX</h1>
-        <p>Use o QR Code abaixo para finalizar sua doação.</p>
-
-        <div class="info-box">
-            <p>Destino: <strong id="instituicao-destino"></strong></p>
-            <p>Valor: <strong id="valor-doacao"></strong></p>
+    <header>
+        <div class="banner">
+           <img src="img/banner/menor.png" alt="Banner de doação">
+    
+           <div class="topo">
+               <h1 class="logo">Abraço Solidário</h1>
+               <nav class="menu">
+                   <ul>
+                       <li><a href="#intro-section">Nosso trabalho</a></li>
+                       <li><a href="#intro-section">Doar</a></li>
+                       <li><a href="#Instituições">Instituições</a></li>
+                       <li><a href="#">Contato</a></li>
+                       <li><a href="#">Login</a></li>
+                   </ul>
+               </nav>
+           </div>
         </div>
+    </header>
 
-        <div id="qrcode"></div>
+    <div class="pix-content-wrapper">
+        <div class="container">
+            <h1>Pague com PIX</h1>
+            <p>Use o QR Code ou a chave Copia e Cola abaixo.</p>
 
-        <p><small>Este QR Code é simulado, mas representa a forma de pagamento PIX na vida real.</small></p>
-        <button onclick="window.location.href='index.html'" style="padding: 10px 20px; background-color: #78b3a7; color: white; border: none; border-radius: 5px; cursor: pointer;">Voltar ao Início</button>
+            <div class="info-box">
+                <p>Destino: <strong id="instituicao-destino"></strong></p>
+                <p>Valor: <strong id="valor-doacao"></strong></p>
+            </div>
+
+            <div id="qrcode"></div>
+            
+            <div id="cronometro-pix">00:10</div>
+            
+            <p style="font-size: 0.9em; color: #777;">
+                Você tem 10 segundos para realizar o pagamento.
+            </p>
+
+            <div class="pix-key-container">
+                <div id="chave-pix-copia">chave.pix.aleatoria@email.com</div>
+                <button class="copy-button" id="copy-pix-button">Copiar</button>
+            </div>
+            <button onclick="window.location.href='index.html'" class="botao-principal">Voltar ao início</button>
+        </div>
     </div>
 
     <script>
+        // Função utilitária para gerar uma chave PIX simulada (email/telefone)
+        function gerarChavePixAleatoria() {
+            const tipo = Math.random() > 0.5 ? 'email' : 'telefone';
+            if (tipo === 'email') {
+                return 'abraco.solidario' + Math.floor(Math.random() * 999) + '@ong.org.br';
+            } else {
+                // Simula um telefone (Ex: 11987654321)
+                return '(' + Math.floor(Math.random() * 80 + 10) + ') 9' + Math.floor(Math.random() * 9000 + 1000) + '-' + Math.floor(Math.random() * 9000 + 1000);
+            }
+        }
+        
+        // Função principal do JavaScript
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. Obter dados da URL (Query String)
+            // --- Variáveis Globais do Cronômetro ---
+            let tempoRestante = 10; 
+            const elementoCronometro = document.getElementById('cronometro-pix');
+            
+            // 1. Geração e Exibição da Chave PIX
+            const chavePix = gerarChavePixAleatoria();
+            document.getElementById('chave-pix-copia').textContent = chavePix;
+            
+            // 2. Lógica de Cópia
+            const copyButton = document.getElementById('copy-pix-button');
+            copyButton.addEventListener('click', () => {
+                navigator.clipboard.writeText(chavePix).then(() => {
+                    // Feedback visual temporário
+                    copyButton.textContent = 'Copiado!';
+                    copyButton.style.backgroundColor = '#4CAF50'; // Verde de sucesso
+                    setTimeout(() => {
+                        copyButton.textContent = 'Copiar';
+                        // Retorna à cor do botão no CSS (78b3a7)
+                        copyButton.style.backgroundColor = '#78b3a7'; 
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Erro ao copiar:', err);
+                    alert('Erro ao copiar a chave PIX. Tente novamente.');
+                });
+            });
+            
+            // 3. Obter dados da URL e Exibir informações
             const urlParams = new URLSearchParams(window.location.search);
             const instituicao = urlParams.get('instituicao');
             const valor = urlParams.get('valor');
 
-            // 2. Exibir as informações na página
             document.getElementById('instituicao-destino').textContent = instituicao || 'Instituição Não Definida';
             
             let valorFormatado = "R$ 0,00";
@@ -87,12 +316,9 @@
             document.getElementById('valor-doacao').textContent = valorFormatado;
 
 
-            // 3. Gerar o "Código PIX" Aleatório para o QR Code
-            // Em uma aplicação real, aqui você usaria o "Pix Copia e Cola" ou o payload do PIX.
-            // Aqui, geramos uma string aleatória (simulada) para o QR Code.
+            // 4. Gerar o "Código PIX" Aleatório para o QR Code (Mantido)
             const codigoPixAleatorio = `Doacao_${instituicao}_${valor}_${Math.random().toString(36).substring(2, 15)}_${new Date().getTime()}`;
 
-            // 4. Gerar o QR Code
             if (document.getElementById("qrcode")) {
                 new QRCode(document.getElementById("qrcode"), {
                     text: codigoPixAleatorio,
@@ -103,6 +329,29 @@
                     correctLevel : QRCode.CorrectLevel.H
                 });
             }
+
+            // 5. Lógica do Cronômetro (Mantida)
+            function atualizarCronometro() {
+                const minutos = Math.floor(tempoRestante / 60);
+                const segundos = tempoRestante % 60;
+
+                const tempoFormatado = 
+                    String(minutos).padStart(2, '0') + ':' + 
+                    String(segundos).padStart(2, '0');
+
+                elementoCronometro.textContent = tempoFormatado;
+
+                if (tempoRestante <= 0) {
+                    clearInterval(intervalo); 
+                    localStorage.setItem('pixTimeOut', 'true'); 
+                    window.location.href = 'index.html'; 
+                }
+
+                tempoRestante--;
+            }
+
+            const intervalo = setInterval(atualizarCronometro, 1000);
+
         });
     </script>
 

@@ -2,6 +2,12 @@
   box-sizing: border-box;
 }
 
+.notification-float.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
 body {
   font-family: 'Times New Roman', Times, serif;
   background-color: #f4f4f4;
@@ -214,8 +220,6 @@ h2 {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 300px;
-  /* Removido height: 350px; para permitir que a caixa se expanda */
-  /* Adicionada altura mínima para garantir que não fiquem muito pequenas sem conteúdo */
   min-height: 350px; 
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
@@ -224,15 +228,25 @@ h2 {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  /* Adicionado box-sizing: border-box para que padding e border sejam incluídos na largura/altura */
   box-sizing: border-box; 
 }
 
-/* * Você pode manter o restante do seu CSS como está, 
- * mas é uma boa prática aplicar o box-sizing em todos os elementos.
- */
+.notification-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #9fccc3;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000; /* Garante que fique acima de outros elementos */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(100px);
+  transition: all 0.5s ease-in-out;
+}
 
-/* RECOMENDAÇÃO: Adicione isso no topo do seu arquivo CSS */
 *, *::before, *::after {
   box-sizing: border-box;
 }

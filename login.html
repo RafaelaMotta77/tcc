@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Abraço Solidário</title>
+</head>
+<style>
+    /* O CSS é o mesmo das versões anteriores, mantendo a responsividade e o pop-up CNPJ */
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Times New Roman', Times, serif;
+        background-color: #f4f4f4;
+        width: 100%;
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+    }
+
+    h2 {
+        text-align: center;
+        margin: 35px;
+        font-family: initial;
+        font-size: 35px;
+        font-weight: bold;
+        color: #78b3a7;
+        text-shadow: 3px 3px 5px rgba(98, 95, 95, 0.5);
+        width: 100%;
+    }
+
+    /* Estilos do Banner e Menu (mantidos) */
+    .banner {
+        position: relative;
+        width: 100%;
+        text-align: center;
+        overflow: hidden;
+        height: 15vh;
+    }
+
+    .banner img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .topo {
+        position: absolute;
+        top: 20px;
+        left: 30px;
+        right: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 2;
+    }
+
+    .logo {
+        font-family: initial;
+        font-size: 24px;
+        font-weight: bold;
+        color: #ffffff;
+        text-shadow: 3px 3px 5px rgba(145, 140, 140, 0.5);
+        margin: 0;
+    }
+
+    .menu ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 30px;
+    }
+
+    .menu a {
+        text-decoration: none;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        position: relative;
+        transition: color 0.3s ease;
+    }
+
+    .menu a::after {
+        content: '';
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: #9fccc3;
+        transition: width 0.3s ease;
+    }
+
+    .menu a:hover {
+        color: #9fccc3;
+    }
+
+    .menu a:hover::after {
+        width: 100%;
+    }
+
+    /* CONTAINER PRINCIPAL: Centraliza vertical e horizontalmente */
+    .form-wrapper {
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+        min-height: calc(100vh - 15vh);
+        width: 100%;
+        padding: 30px 0;
+        transition: all 0.5s ease;
+    }
+
+    /* Estilos dos Formulários de Login/Registro */
+    .auth-container {
+        background-color: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        max-width: 380px; 
+        width: 90%;
+        text-align: center;
+        transition: all 0.5s ease;
+        position: relative; 
+    }
+
+    .auth-container h3 {
+        color: #78b3a7;
+        margin-bottom: 30px;
+        font-size: 24px;
+    }
+
+    .input-group {
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    .cnpj-field-wrapper {
+        position: relative; 
+    }
+
+    .input-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #555;
+    }
+
+    .input-group input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+    
+    .btn-submit {
+        width: 100%;
+        padding: 12px;
+        background-color: #78b3a7;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 10px;
+    }
+
+    .btn-submit:hover {
+        background-color: #609d93;
+    }
+
+    .links-auth a {
+        color: #78b3a7;
+        text-decoration: none;
+        font-size: 14px;
+        margin: 0 10px;
+        cursor: pointer;
+    }
+    
+    .hidden {
+        display: none !important;
+    }
+
+    /* --- CNPJ help icon and pop-up --- */
+    .cnpj-help-icon {
+        display: inline-block;
+        width: 18px; 
+        height: 18px;
+        background-color: #78b3a7;
+        color: white;
+        border-radius: 50%;
+        text-align: center;
+        font-size: 14px;
+        line-height: 18px;
+        margin-left: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        vertical-align: top;
+    }
+
+    /* Pop-up de Explicação (Flutuante no Desktop) */
+    #info-cnpj-container {
+        position: absolute;
+        top: 0; 
+        left: 105%; 
+        margin-left: 10px; 
+        
+        background-color: #fff; 
+        border: 1px solid #78b3a7;
+        padding: 15px;
+        border-radius: 8px;
+        width: 250px;
+        z-index: 500; 
+        text-align: left;
+        display: none; 
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    #info-cnpj-container.visible {
+        display: block;
+    }
+
+    #info-cnpj-container h4 {
+        color: #78b3a7;
+        margin-top: 0;
+        font-size: 1.1em;
+    }
+
+    #info-cnpj-container p {
+        font-size: 0.85em;
+        color: #444;
+        line-height: 1.3;
+    }
+
+    /* --- MEDIA QUERY para Mobile (Layout de Coluna) --- */
+    @media (max-width: 768px) {
+        .form-wrapper {
+            flex-direction: column; 
+            min-height: auto; 
+            padding: 20px;
+        }
+
+        .auth-container {
+            max-width: 100%; 
+            position: static; 
+        }
+
+        #info-cnpj-container {
+            display: none !important;
+        }
+    }
+
+
+    /* --- ESTILOS DO MODAL DE RECUPERAÇÃO DE SENHA (mantidos) --- */
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s, opacity 0.3s;
+    }
+
+    .modal-overlay.active {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .modal-content {
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        max-width: 400px;
+        width: 90%;
+        text-align: center;
+        transform: scale(0.9);
+        transition: transform 0.3s ease;
+        position: relative;
+    }
+    
+    .modal-overlay.active .modal-content {
+        transform: scale(1);
+    }
+    
+    .modal-content h4 {
+        color: #78b3a7;
+        margin-top: 0;
+    }
+    
+    .btn-close-modal {
+        background: none;
+        border: none;
+        color: #555;
+        font-size: 18px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
+
+</style>
+<body>
+    <header>
+        <div class="banner">
+           <img src="img/banner/menor.png" alt="Banner de doação">
+    
+           <div class="topo">
+               <h1 class="logo">Abraço Solidário</h1>
+               <nav class="menu">
+                   <ul>
+                       <li><a href="#intro-section">Nosso trabalho</a></li>
+                       <li><a href="#intro-section">Doar</a></li>
+                       <li><a href="#Instituições">Instituições</a></li>
+                       <li><a href="#">Contato</a></li>
+                       <li><a href="login.html">Login</a></li>
+                   </ul>
+               </nav>
+           </div>
+        </div>
+    </header>
+
+    <div class="form-wrapper">
+        <div id="auth-container" class="auth-container">
+            
+            <form id="login-form">
+                <h3>Acessar sua Conta</h3>
+                
+                <div class="input-group">
+                    <label for="login-email">E-mail ou Usuário</label>
+                    <input type="text" id="login-email" name="email" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="login-senha">Senha</label>
+                    <input type="password" id="login-senha" name="senha" required>
+                </div>
+
+                <button type="submit" class="btn-submit">Entrar</button>
+            </form>
+            
+            <form id="register-form" class="hidden">
+                <h3>Criar sua Conta</h3>
+                
+                <div class="input-group">
+                    <label for="reg-nome">Nome Completo</label>
+                    <input type="text" id="reg-nome" name="nome" required>
+                </div>
+                
+                <div class="input-group">
+                    <div class="cnpj-field-wrapper">
+                        <label for="reg-cnpj">
+                            CNPJ (Opcional)
+                            <span class="cnpj-help-icon" id="cnpj-help-icon">i</span> 
+                        </label>
+                        <input type="text" id="reg-cnpj" name="cnpj">
+                    
+                        <div id="info-cnpj-container">
+                            <h4>Por que pedimos seu CNPJ?</h4>
+                            <p>
+                                O CNPJ é opcional e serve para identificar a sua conta como sendo de uma **Instituição ou Empresa Doadora**.
+                                Com ele, você terá acesso a um painel de controle com relatórios fiscais e o histórico de todas as suas doações.
+                            </p>
+                            <p style="font-weight: bold;">Se for uma pessoa física, deixe o campo vazio.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="reg-email">E-mail</label>
+                    <input type="email" id="reg-email" name="email" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="reg-senha">Criar Senha</label>
+                    <input type="password" id="reg-senha" name="senha" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="reg-confirmar-senha">Confirmar Senha</label>
+                    <input type="password" id="reg-confirmar-senha" name="confirmar-senha" required>
+                </div>
+
+                <button type="submit" class="btn-submit">Registrar</button>
+            </form>
+
+            <div class="links-auth">
+                <a id="forgot-password-link">Esqueci minha senha</a> | 
+                <a id="toggle-register-link">Criar Conta</a>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div id="forgot-password-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="close-modal-btn" class="btn-close-modal">&times;</button>
+            <h4>Recuperação de Senha</h4>
+            <p>Informe seu e-mail para receber as instruções de recuperação.</p>
+            
+            <form id="recover-form">
+                <div class="input-group">
+                    <label for="recover-email">E-mail</label>
+                    <input type="email" id="recover-email" name="email" required>
+                </div>
+                <button type="submit" class="btn-submit">Enviar Instruções</button>
+            </form>
+        </div>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const toggleRegisterLink = document.getElementById('toggle-register-link');
+        const forgotPasswordLink = document.getElementById('forgot-password-link');
+        const modal = document.getElementById('forgot-password-modal');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        
+        // Elementos do CNPJ
+        const cnpjIcon = document.getElementById('cnpj-help-icon');
+        const infoCnpjContainer = document.getElementById('info-cnpj-container');
+
+        let isLoginForm = true;
+
+        // Função para esconder o pop-up do CNPJ
+        function hideCnpjPopup() {
+            infoCnpjContainer.classList.remove('visible');
+        }
+
+        // --- Lógica do Pop-up CNPJ (Clique no ícone) ---
+        if (cnpjIcon) {
+            cnpjIcon.addEventListener('click', (e) => {
+                e.stopPropagation(); 
+                
+                if (window.innerWidth > 768) {
+                    infoCnpjContainer.classList.toggle('visible');
+                } else {
+                    alert("O CNPJ é opcional. Serve para identificar empresas/instituições e gerar relatórios fiscais.");
+                }
+            });
+        }
+
+        // --- Lógica para fechar o pop-up CNPJ (Clique fora) ---
+        document.addEventListener('click', (e) => {
+            if (infoCnpjContainer.classList.contains('visible') && !infoCnpjContainer.contains(e.target) && e.target !== cnpjIcon) {
+                hideCnpjPopup();
+            }
+        });
+        
+        // --- 1. Alternar entre Login e Criar Conta ---
+        toggleRegisterLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            if (isLoginForm) {
+                loginForm.classList.add('hidden');
+                registerForm.classList.remove('hidden');
+                toggleRegisterLink.textContent = 'Voltar para Login';
+                hideCnpjPopup(); 
+
+            } else {
+                registerForm.classList.add('hidden');
+                loginForm.classList.remove('hidden');
+                toggleRegisterLink.textContent = 'Criar Conta';
+                hideCnpjPopup();
+            }
+            isLoginForm = !isLoginForm;
+        });
+
+        // --- 2. Funcionalidade "Esqueci Minha Senha" (Modal) ---
+        forgotPasswordLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.classList.add('active'); 
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // --- 3. Lógica de Submissão de Formulários ---
+        
+        // ** NOVIDADE AQUI: Redirecionamento para index.html **
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Simula o processamento do login (em um ambiente real, teria validação aqui)
+            alert('Login simulado realizado com sucesso!');
+            window.location.href = 'index.html'; // Redireciona para a página principal
+        });
+
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const senha = document.getElementById('reg-senha').value;
+            const confirmSenha = document.getElementById('reg-confirmar-senha').value;
+            
+            if (senha !== confirmSenha) {
+                alert('As senhas não coincidem!');
+                return;
+            }
+            
+            alert('Conta criada com sucesso! Redirecionando para o Login.');
+            toggleRegisterLink.click(); 
+        });
+        
+        document.getElementById('recover-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('recover-email').value;
+            alert(`Instruções de recuperação enviadas para: ${email}. Verifique seu e-mail.`);
+            modal.classList.remove('active');
+        });
+    });
+</script>
+
+</body>
+</html>

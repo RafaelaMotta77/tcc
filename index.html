@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="Style/style.css">
 </head>
 <body>
+  <div id="pix-timeout-notification" class="notification-float">
+    O tempo para pagamento PIX expirou! Tente novamente.
+</div>
   <header>
      <!--banner-->
     <div class="banner">
@@ -26,10 +29,10 @@
         <nav class="menu">
           <ul>
             <li><a href="#intro-section">Nosso trabalho</a></li>
-            <li><a href="#intro-section">Doar</a></li>
-            <li><a href="#Instituições">Instituições</a></li>
-            <li><a href="#">Contato</a></li>
-            <li><a href="#">Login</a></li>
+                       <li><a href="#intro-section">Doar</a></li>
+                       <li><a href="#Instituições">Instituições</a></li>
+                       <li><a href="contato.html">Contato</a></li>
+                       <li><a href="login.html">Login</a></li>
           </ul>
         </nav>
       </div>
@@ -114,6 +117,27 @@
       </a>
       </section>
   </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const notification = document.getElementById('pix-timeout-notification');
+    
+    // Verifica se o sinal de timeout existe
+    if (localStorage.getItem('pixTimeOut') === 'true') {
+        
+        // Exibe a notificação
+        notification.classList.add('show');
+        
+        // Limpa o sinal para que a notificação não apareça na próxima visita
+        localStorage.removeItem('pixTimeOut'); 
+
+        // Faz a notificação desaparecer automaticamente após 5 segundos
+        setTimeout(() => {
+            notification.classList.remove('show');
+        }, 5000);
+    }
+});
+</script>
   <footer>
     <p>© 2025 Abraço Solidário. Todos os direitos reservados.</p>
   </footer>
