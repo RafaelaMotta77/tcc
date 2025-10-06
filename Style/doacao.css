@@ -1,0 +1,345 @@
+:root {
+    --primary-color: #78b3a7;
+    --secondary-color: #9fccc3;
+    --text-dark: #333;
+    --text-medium: #555;
+    --text-light: #777;
+    --bg-light: #f9f9f9;
+    --border-color: #e0e0e0;
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--bg-light);
+    width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    color: var(--text-medium);
+}
+
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--primary-color);
+    font-weight: 700;
+    text-shadow: 2px 2px 4px var(--shadow-light);
+}
+
+h2 {
+    text-align: center;
+    margin: 40px 0 20px;
+    font-size: 2.2em;
+    letter-spacing: 0.5px;
+}
+
+.banner {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    height: 15vh;
+    min-height: 100px;
+}
+
+.banner img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.topo {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    right: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+}
+
+.logo a {
+    color: inherit; 
+    text-decoration: none; 
+    transition: color 0.3s ease;
+}
+
+.logo a:hover {
+    color: var(--secondary-color, #9fccc3); 
+}
+
+.logo {
+    font-family: initial;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff; 
+    text-shadow: 3px 3px 5px rgba(145, 140, 140, 0.5);
+    margin: 0;
+}
+
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 25px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+    font-size: 1em;
+    font-weight: 600;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.menu a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--secondary-color);
+    transition: width 0.3s ease;
+}
+
+.menu a:hover {
+    color: var(--secondary-color);
+}
+
+.menu a:hover::after {
+    width: 100%;
+}
+
+.main-content {
+    max-width: 750px;
+    margin: 50px auto;
+    padding: 40px 50px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px var(--shadow-light);
+}
+
+.main-content p {
+    text-align: center;
+    color: var(--text-light);
+    margin-bottom: 40px;
+    line-height: 1.6;
+    font-size: 1.05em;
+}
+
+.form-group {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-light);
+    transition: box-shadow 0.3s ease;
+}
+
+.form-group:focus-within {
+    box-shadow: 0 0 0 3px rgba(120, 179, 167, 0.3);
+}
+
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--primary-color);
+    font-size: 1.15em;
+}
+
+input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: white;
+    font-size: 1em;
+    color: var(--text-dark);
+}
+input[type="file"]::-webkit-file-upload-button {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 15px;
+    transition: background-color 0.3s ease;
+}
+input[type="file"]::-webkit-file-upload-button:hover {
+    background-color: #8bbab2;
+}
+
+
+.radio-option {
+    display: block;
+    margin-bottom: 15px;
+    position: relative;
+    cursor: pointer;
+    padding-left: 35px;
+    font-size: 1em;
+}
+
+.radio-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.radio-option .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 22px;
+    width: 22px;
+    background-color: #eee;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+}
+
+.radio-option input[type="radio"]:checked ~ .checkmark {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.radio-option .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.radio-option input[type="radio"]:checked ~ .checkmark:after {
+    display: block;
+}
+
+.radio-option .checkmark:after {
+    top: 5px;
+    left: 5px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+.radio-option:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+.radio-option input:checked ~ .checkmark:hover {
+    background-color: #609d93;
+    border-color: #609d93;
+}
+
+.form-group small {
+    color: var(--text-light);
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: block;
+}
+
+#endereco-destino {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #e8f5e9;
+    border: 1px dashed var(--primary-color);
+    border-radius: 5px;
+    font-size: 1em;
+    color: var(--text-dark);
+    display: none;
+    line-height: 1.5;
+    font-weight: 600;
+}
+#endereco-destino strong {
+    color: var(--primary-color);
+}
+
+.submit-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 16px 25px;
+    width: 100%;
+    font-size: 1.15em;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: 20px;
+}
+
+.submit-btn:hover {
+    background-color: #609d93;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px var(--shadow-medium);
+}
+
+@media (max-width: 768px) {
+    .topo {
+        flex-direction: column;
+        gap: 10px;
+        top: 10px;
+        left: 15px;
+        right: 15px;
+    }
+    .logo {
+        font-size: 1.5em;
+    }
+    .menu ul {
+        gap: 15px;
+    }
+    .menu a {
+        font-size: 0.9em;
+    }
+
+    .main-content {
+        margin: 30px 15px;
+        padding: 25px;
+    }
+    h2 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+    }
+    .main-content p {
+        font-size: 1em;
+        margin-bottom: 25px;
+    }
+    .form-group {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        font-size: 1em;
+    }
+    .radio-option {
+        padding-left: 30px;
+        margin-bottom: 10px;
+        font-size: 0.95em;
+    }
+    .radio-option .checkmark {
+        height: 20px;
+        width: 20px;
+    }
+    .radio-option .checkmark:after {
+        top: 4px;
+        left: 4px;
+        width: 8px;
+        height: 8px;
+    }
+    .submit-btn {
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+}

@@ -4,35 +4,32 @@
   <meta charset="UTF-8">
   <title>Abraço Solidário</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="Style/style.css">
+  <link rel="stylesheet" href="Style/index.css">
 </head>
 <body>
   <div id="pix-timeout-notification" class="notification-float">
     O tempo para pagamento PIX expirou! Tente novamente.
 </div>
   <header>
-     <!--banner-->
     <div class="banner">
       <img src="img/banner/1.png" alt="Banner de doação">
-
- <!--onda-->
       <div class="svg-wave">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
           <path fill="#f4f4f4" fill-opacity="1"
             d="M0,160L40,165.3C80,171,160,181,240,181.3C320,181,400,171,480,181.3C560,192,640,224,720,213.3C800,203,880,149,960,133.3C1040,117,1120,139,1200,149.3C1280,160,1360,160,1400,160L1440,160L1440,320L1392,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"/>
         </svg>
-      </div>Somos o Instituto Casa de Todos, um espaço de reabilitação para quem busca um novo começo com dignidade e apoio.
-
-      <!--menu-->
+      </div>
       <div class="topo">
         <h1 class="logo">Abraço Solidário</h1>
+
+
         <nav class="menu">
           <ul>
-            <li><a href="#intro-section">Nosso trabalho</a></li>
-                       <li><a href="#intro-section">Doar</a></li>
-                       <li><a href="#Instituições">Instituições</a></li>
-                       <li><a href="contato.html">Contato</a></li>
-                       <li><a href="login.html">Login</a></li>
+              <li><a href="#intro-section">Nosso trabalho</a></li>
+              <li><a href="#intro-section">Doar</a></li>
+              <li><a href="#Instituições">Instituições</a></li>
+              <li><a href="contato.html">Contato</a></li>
+              <li><a href="login.html">Login</a></li>
           </ul>
         </nav>
       </div>
@@ -53,8 +50,6 @@
       </div>
     </div>
   </section>
-
-
   <section class="intro-section" id="intro-section-2">
     <div class="container">
       <div class="intro-content">
@@ -65,7 +60,6 @@
         </div>
       </div>
     </div>
-
   <section id="Instituições" class="Instituições">
     <div class="custom-shape-divider-top-1757957461">
         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -82,7 +76,6 @@
           <p>Somos o Instituto Patas Felizes, um refúgio para animais abandonados e vítimas de maus-tratos.</p>
         </div>
       </a>
-        
       <a href="instituição/casatodos.html" class="card-link">
         <div class="card">
           <img src="img/inst/casatodos.png" alt="Instituição">
@@ -90,7 +83,6 @@
           <p>Somos o Instituto Casa de Todos, um espaço de reabilitação para quem busca um novo começo com dignidade e apoio.</p>
         </div>
       </a>
-
       <a href="instituição/florescer.html" class="card-link">
         <div class="card">
           <img src="img/inst/florescer.png" alt="Instituição">
@@ -99,7 +91,6 @@
             apoio e a chance de reconstruir suas vidas.</p>
         </div>
       </a>
-        
       <a href="instituição/recanto.html" class="card-link">
         <div class="card">
           <img src="img/inst/Recanto da Sabedoria.png" alt="Instituição">
@@ -107,7 +98,6 @@
           <p>Somos o Recanto da Sabedoria, um lar acolhedor para idosos que merecem todo o carinho e respeito.</p>
         </div>
       </a>
-
       <a href="instituição/sonhocolorido.html" class="card-link">
         <div class="card">
           <img src="img/inst/sonhocolorido.png" alt="Instituição">
@@ -117,26 +107,49 @@
       </a>
       </section>
   </section>
-
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const notification = document.getElementById('pix-timeout-notification');
-    
-    // Verifica se o sinal de timeout existe
+  
     if (localStorage.getItem('pixTimeOut') === 'true') {
         
-        // Exibe a notificação
         notification.classList.add('show');
         
-        // Limpa o sinal para que a notificação não apareça na próxima visita
         localStorage.removeItem('pixTimeOut'); 
 
-        // Faz a notificação desaparecer automaticamente após 5 segundos
         setTimeout(() => {
             notification.classList.remove('show');
         }, 5000);
     }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+        const menuBtn = document.querySelector('.hamburger-btn');
+        const menu = document.querySelector('.menu-mobile');
+
+        // Função para alternar a classe 'open'
+        function toggleMenu() {
+            menu.classList.toggle('open');
+            // Opcional: Altera o ícone do botão de hambúrguer (☰) para um X
+            if (menu.classList.contains('open')) {
+                menuBtn.innerHTML = '&times;'; // Ícone X
+            } else {
+                menuBtn.innerHTML = '&#9776;'; // Ícone Hambúrguer
+            }
+        }
+
+        // 1. Abre/Fecha o menu ao clicar no botão
+        menuBtn.addEventListener('click', toggleMenu);
+
+        // 2. Fecha o menu ao clicar em qualquer link (opcional, mas recomendado)
+        const menuLinks = menu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                // Pequeno delay para permitir que o link navegue antes de fechar
+                setTimeout(toggleMenu, 100); 
+            });
+        });
+    });
 </script>
   <footer>
     <p>© 2025 Abraço Solidário. Todos os direitos reservados.</p>
