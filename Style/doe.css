@@ -25,7 +25,6 @@ h2 {
 .banner {
   position: relative;
   width: 100%;
-  height: 100vh;
   text-align: center;
   overflow: hidden;
   height: 15vh;
@@ -40,13 +39,15 @@ h2 {
 
 .topo {
   position: absolute;
-  top: 20px;
-  left: 30px;
-  right: 30px;
+  top: 0; /* Ajustado para 0 para maior controle no mobile */
+  left: 0;
+  right: 0;
+  padding: 0 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 2;
+  height: 100%; /* Para centralizar verticalmente no desktop */
 }
 
 .logo a {
@@ -56,7 +57,7 @@ h2 {
 }
 
 .logo a:hover {
-  color: var(--secondary-color, #9fccc3); 
+  color: #9fccc3; 
 }
 
 .logo {
@@ -104,6 +105,64 @@ h2 {
   width: 100%;
 }
 
+/* NOVO: Botão Hambúrguer (Oculto no Desktop) */
+.hamburger-btn {
+    display: none; /* Oculto por padrão */
+    background: none;
+    border: none;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    z-index: 100;
+}
+
+/* NOVO: Menu Mobile (Fundo Alterado e Oculto) */
+.menu-mobile {
+    display: none; /* Oculto por padrão */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* FUNDO DO MENU MOBILE ALTERADO AQUI */
+    background-color: rgba(159, 204, 195, 0.95); /* #9fccc3 com 95% de opacidade */
+    z-index: 50;
+    padding-top: 80px;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease-in-out;
+}
+
+.menu-mobile.open {
+    transform: translateX(0); /* Desliza para dentro da tela */
+    display: block;
+}
+
+.menu-mobile ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.menu-mobile a {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 0;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.menu-mobile a:hover {
+    color: #333;
+}
+
+
+/* Seção de Introdução e Formulário */
 .intro-section {
   display: flex;
   align-items: flex-start;
@@ -123,7 +182,7 @@ h2 {
   background-color: #ffffff;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: none; /* Removido box-shadow interno, mantendo apenas o externo do .intro-section */
 }
 
 .intro-content h2 {
@@ -141,42 +200,12 @@ h2 {
   text-align: left;
 }
 
-.donation-form h3 {
+.donation-form-container h3 {
   color: #78b3a7;
   margin-bottom: 20px;
   text-align: center;
-}
-
-.options {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.options button {
-  background-color: #f4f4f4;
-  border: 1px solid #ccc;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.options button.selected {
-  background-color: #007bff;
-  color: white;
-  border: 1px solid #007bff;
-}
-
-.radio-group {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.radio-group label {
-  font-size: 16px;
-  cursor: pointer;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 input[type="text"],
@@ -197,21 +226,30 @@ select {
   margin-bottom: 20px;
 }
 
-.form-section label {
+.form-section label,
+.donation-form-container label {
   display: block;
   font-size: 16px;
   margin-bottom: 8px;
   color: #555;
+  font-weight: bold;
 }
 
 .footer {
   font-size: 14px;
   color: #777;
   text-align: center;
+  margin-top: 30px;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+.footer p {
+  margin: 10px 0;
 }
 
 .footer a {
-  color: #007bff;
+  color: #78b3a7;
   text-decoration: none;
 }
 
@@ -237,20 +275,60 @@ select {
   background-color: #559487;
 }
 
+/* -------------------------------------------------- */
+/* MEDIA QUERIES PARA RESPONSIVIDADE                  */
+/* -------------------------------------------------- */
+
 @media (max-width: 900px) {
+  /* Ocultar Menu Desktop */
+  .menu {
+      display: none;
+  }
+
+  /* Exibir e Posicionar Hambúrguer */
+  .hamburger-btn {
+      display: block;
+      position: absolute;
+      top: 5px; /* ALINHAMENTO NO TOPO */
+      right: 15px;
+      padding: 10px; /* Aumenta a área de clique */
+  }
+
+  /* Ajuste do Topo Mobile */
+  .topo {
+      padding: 0 15px;
+      justify-content: space-between;
+      align-items: center;
+      height: auto;
+  }
+
+  .logo {
+      font-size: 20px;
+      position: absolute;
+      top: 15px; 
+      left: 15px;
+  }
+
+  /* Layout Principal em Coluna */
   .intro-section {
-      flex-direction: column;
-      padding: 40px 20px;
-      gap: 30px;
+    flex-direction: column;
+    padding: 40px 20px;
+    gap: 30px;
+    margin: 20px auto;
   }
 
   .intro-content,
   .donation-form-container {
-      width: 100%;
-      margin: 0;
+    width: 100%; /* Ocupa a largura total */
+    padding: 20px;
   }
 
   .intro-content h2 {
-      text-align: center;
+    text-align: center;
+    font-size: 30px;
+  }
+
+  .intro-content p {
+    text-align: center;
   }
 }

@@ -38,6 +38,7 @@ h2 {
     letter-spacing: 0.5px;
 }
 
+/* Header/Banner */
 .banner {
     position: relative;
     width: 100%;
@@ -56,15 +57,18 @@ h2 {
 
 .topo {
     position: absolute;
-    top: 20px;
-    left: 30px;
-    right: 30px;
+    top: 0; /* Ajustado para 0 para maior controle no mobile */
+    left: 0;
+    right: 0;
+    padding: 0 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 2;
+    height: 100%; /* Para centralizar verticalmente no desktop */
 }
 
+/* Logo */
 .logo a {
     color: inherit; 
     text-decoration: none; 
@@ -72,7 +76,7 @@ h2 {
 }
 
 .logo a:hover {
-    color: var(--secondary-color, #9fccc3); 
+    color: var(--secondary-color); 
 }
 
 .logo {
@@ -84,6 +88,7 @@ h2 {
     margin: 0;
 }
 
+/* Menu Desktop */
 .menu ul {
     list-style: none;
     margin: 0;
@@ -120,6 +125,64 @@ h2 {
     width: 100%;
 }
 
+/* NOVO: Botão Hambúrguer (Oculto no Desktop) */
+.hamburger-btn {
+    display: none; /* Oculto por padrão */
+    background: none;
+    border: none;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+    z-index: 100;
+}
+
+/* NOVO: Menu Mobile (Fundo Alterado e Oculto) */
+.menu-mobile {
+    display: none; /* Oculto por padrão */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* FUNDO DO MENU MOBILE ALTERADO AQUI */
+    background-color: rgba(159, 204, 195, 0.95); /* #9fccc3 com 95% de opacidade */
+    z-index: 50;
+    padding-top: 80px;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease-in-out;
+}
+
+.menu-mobile.open {
+    transform: translateX(0); /* Desliza para dentro da tela */
+    display: block;
+}
+
+.menu-mobile ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.menu-mobile a {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 0;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.menu-mobile a:hover {
+    color: var(--text-dark); /* Cor escura para contraste no fundo claro */
+}
+
+
+/* Conteúdo Principal e Formulário */
 .main-content {
     max-width: 750px;
     margin: 50px auto;
@@ -159,6 +222,7 @@ h2 {
     font-size: 1.15em;
 }
 
+/* Estilos de input file (mantidos) */
 input[type="file"] {
     width: 100%;
     padding: 12px;
@@ -182,7 +246,7 @@ input[type="file"]::-webkit-file-upload-button:hover {
     background-color: #8bbab2;
 }
 
-
+/* Estilos de Radio Button (mantidos) */
 .radio-option {
     display: block;
     margin-bottom: 15px;
@@ -286,24 +350,41 @@ input[type="file"]::-webkit-file-upload-button:hover {
     box-shadow: 0 6px 15px var(--shadow-medium);
 }
 
+/* Media Queries para Responsividade */
 @media (max-width: 768px) {
-    .topo {
-        flex-direction: column;
-        gap: 10px;
-        top: 10px;
-        left: 15px;
-        right: 15px;
-    }
-    .logo {
-        font-size: 1.5em;
-    }
-    .menu ul {
-        gap: 15px;
-    }
-    .menu a {
-        font-size: 0.9em;
+    /* Menu Mobile */
+    .menu {
+        display: none;
     }
 
+    .hamburger-btn {
+        display: block;
+        position: absolute;
+        top: 5px; /* ALINHAMENTO NO TOPO */
+        right: 15px;
+        padding: 10px;
+    }
+    
+    .topo {
+        flex-direction: row; /* Volta para row para manter logo e hambúrguer na mesma linha */
+        justify-content: space-between;
+        align-items: center;
+        gap: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 0 15px; /* Padding nas laterais */
+        height: 100px; /* Altura mínima para mobile */
+    }
+
+    .logo {
+        font-size: 1.5em;
+        /* Alinha a logo à esquerda do topo móvel */
+        position: static; 
+        margin: 0;
+    }
+
+    /* Conteúdo Principal */
     .main-content {
         margin: 30px 15px;
         padding: 25px;

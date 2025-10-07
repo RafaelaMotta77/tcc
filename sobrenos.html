@@ -10,19 +10,32 @@
     <header>
         <div class="banner">
            <img src="img/banner/menor.png" alt="Banner de doação">
-    
+
            <div class="topo">
             <h1 class="logo"><a href="index.html">Abraço Solidário</a></h1>
-               <nav class="menu">
-                   <ul>
-                    <li><a href="index.html">Nosso trabalho</a></li>
-                       <li><a href="index.html">Doar</a></li>
-                       <li><a href="index.html">Instituições</a></li>
-                       <li><a href="contato.html">Contato</a></li>
-                       <li><a href="login.html">Login</a></li>
-                   </ul>
-               </nav>
-           </div>
+
+                <nav class="menu">
+                    <ul>
+                    <li><a href="index.html#intro-section">Nosso trabalho</a></li>
+                        <li><a href="index.html#intro-section-2">Doar</a></li>
+                        <li><a href="index.html#Instituições">Instituições</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </nav>
+                
+                <button class="hamburger-btn">&#9776;</button>
+
+                <nav class="menu-mobile">
+                    <ul>
+                        <li><a href="index.html#intro-section">Nosso trabalho</a></li>
+                        <li><a href="index.html#intro-section-2">Doar</a></li>
+                        <li><a href="index.html#Instituições">Instituições</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </header>
 
@@ -34,5 +47,31 @@
             </div>
         </section>
         </main>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuBtn = document.querySelector('.hamburger-btn');
+        const menu = document.querySelector('.menu-mobile');
+
+        function toggleMenu() {
+            menu.classList.toggle('open');
+            // Altera o ícone do botão de hambúrguer (☰) para um X
+            if (menu.classList.contains('open')) {
+                menuBtn.innerHTML = '&times;'; // Ícone X
+            } else {
+                menuBtn.innerHTML = '&#9776;'; // Ícone Hambúrguer
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+
+        // Fecha o menu ao clicar em qualquer link
+        const menuLinks = menu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                setTimeout(toggleMenu, 100); 
+            });
+        });
+    });
+</script>
 </body>
 </html>

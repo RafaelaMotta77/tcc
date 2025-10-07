@@ -14,7 +14,20 @@
     
             <div class="topo">
                 <h1 class="logo"><a href="index.html">Abraço Solidário</a></h1>
+                
                 <nav class="menu">
+                    <ul>
+                         <li><a href="index.html">Nosso trabalho</a></li>
+                         <li><a href="index.html">Doar</a></li>
+                         <li><a href="index.html">Instituições</a></li>
+                         <li><a href="contato.html">Contato</a></li>
+                         <li><a href="login.html">Login</a></li>
+                    </ul>
+                </nav>
+                
+                <button class="hamburger-btn">&#9776;</button>
+
+                <nav class="menu-mobile">
                     <ul>
                         <li><a href="index.html">Nosso trabalho</a></li>
                         <li><a href="index.html">Doar</a></li>
@@ -95,7 +108,26 @@
         document.addEventListener('DOMContentLoaded', () => {
             const enderecoDestino = document.getElementById('endereco-destino');
             const radiosEntrega = document.querySelectorAll('input[name="entrega"]');
-            const form = document.querySelector('form'); // Seleciona o formulário
+            const form = document.querySelector('form'); 
+
+            // NOVO: Lógica do menu hambúrguer
+            const menuBtn = document.querySelector('.hamburger-btn');
+            const menu = document.querySelector('.menu-mobile');
+
+            function toggleMenu() {
+                menu.classList.toggle('open');
+                menuBtn.innerHTML = menu.classList.contains('open') ? '&times;' : '&#9776;';
+            }
+
+            menuBtn.addEventListener('click', toggleMenu);
+
+            const menuLinks = menu.querySelectorAll('a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    setTimeout(toggleMenu, 100); 
+                });
+            });
+            // FIM NOVO: Lógica do menu hambúrguer
     
             const enderecoFicticio = {
                 rua: "Rua Solidariedade, 456",
@@ -141,26 +173,14 @@
                 enderecoDestino.style.display = 'none';
             }
     
-            // --- NOVA LÓGICA PARA O BOTÃO FINALIZAR ---
+            // --- LÓGICA PARA O BOTÃO FINALIZAR ---
             form.addEventListener('submit', function(event) {
-                // Garante que o formulário não seja enviado para a action padrão
                 event.preventDefault(); 
     
-                // Simulação de processamento de doação
-                // Em um ambiente real, aqui você faria uma chamada fetch/Ajax para enviar
-                // os dados do formulário (incluindo a imagem) para o servidor.
-    
-                // 1. Verifica se os campos obrigatórios estão preenchidos (incluindo rádio buttons)
                 if (form.checkValidity()) {
-                    
-                    // 2. Alerta de sucesso
-                    alert(  'Doação de item registrada com sucesso! A instituição entrará em contato com as instruções.');
-                    
-                    // 3. Redirecionamento para a página principal
+                    alert( 'Doação de item registrada com sucesso! A instituição entrará em contato com as instruções.');
                     window.location.href = 'index.html';
-    
                 } else {
-                    // Se não for válido, o navegador exibirá os erros de validação padrão
                     alert('Por favor, preencha todos os campos obrigatórios (marcados com *) antes de finalizar.');
                 }
             });

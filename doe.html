@@ -13,6 +13,7 @@
 
             <div class="topo">
                 <h1 class="logo"><a href="index.html">Abraço Solidário</a></h1>
+                
                 <nav class="menu">
                     <ul>
                        <li><a href="index.html">Nosso trabalho</a></li>
@@ -20,6 +21,18 @@
                        <li><a href="index.html">Instituições</a></li>
                        <li><a href="contato.html">Contato</a></li>
                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </nav>
+                
+                <button class="hamburger-btn">&#9776;</button>
+
+                <nav class="menu-mobile">
+                    <ul>
+                        <li><a href="index.html">Nosso trabalho</a></li>
+                        <li><a href="index.html">Doar</a></li>
+                        <li><a href="index.html">Instituições</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                        <li><a href="login.html">Login</a></li>
                     </ul>
                 </nav>
             </div>
@@ -113,7 +126,26 @@
             const campoValorDoacao = document.getElementById('campo-valor-doacao');
             const selectInstituicao = document.getElementById('instituicao-destino'); 
             const form = document.getElementById('donation-form-data');
-    
+            
+            // Lógica do menu hambúrguer (Adicionada)
+            const menuBtn = document.querySelector('.hamburger-btn');
+            const menu = document.querySelector('.menu-mobile');
+
+            function toggleMenu() {
+                menu.classList.toggle('open');
+                menuBtn.innerHTML = menu.classList.contains('open') ? '&times;' : '&#9776;';
+            }
+
+            menuBtn.addEventListener('click', toggleMenu);
+
+            const menuLinks = menu.querySelectorAll('a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    setTimeout(toggleMenu, 100); 
+                });
+            });
+
+            // Lógica do formulário (Original)
             selectTipoDoacao.addEventListener('change', function() {
                 if (this.value === 'Dinheiro') {
                     campoValorDoacao.style.display = 'block';
@@ -123,28 +155,28 @@
                     document.getElementById('valor-doacao').removeAttribute('required');
                 }
             });
-    
+
             form.addEventListener('submit', function(event) {
                 const tipoDoacao = selectTipoDoacao.value;
-    
+
                 if (tipoDoacao === 'Dinheiro') {
                     event.preventDefault();
-    
+
                     const valor = document.getElementById('valor-doacao').value;
                     const instituicaoNome = selectInstituicao.options[selectInstituicao.selectedIndex].text;
-                    
+
                     if (valor && parseFloat(valor) > 0) {
                         window.location.href = `pagina_pix.html?instituicao=${encodeURIComponent(instituicaoNome)}&valor=${encodeURIComponent(valor)}`;
                     } else {
                         alert('Por favor, informe um valor válido para a doação em dinheiro.');
                     }
-    
+
                 } else if (tipoDoacao !== '') {
                     event.preventDefault();
-                    
+
                     const item = encodeURIComponent(selectTipoDoacao.value);
                     const instituicao = encodeURIComponent(selectInstituicao.value);
-                    
+
                     window.location.href = `doacao.html?item=${item}&instituicao=${instituicao}`;
                 }
             });

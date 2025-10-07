@@ -22,7 +22,6 @@
       <div class="topo">
         <h1 class="logo">Abraço Solidário</h1>
 
-
         <nav class="menu">
           <ul>
               <li><a href="#intro-section">Nosso trabalho</a></li>
@@ -32,6 +31,19 @@
               <li><a href="login.html">Login</a></li>
           </ul>
         </nav>
+        
+        <button class="hamburger-btn">&#9776;</button>
+
+        <nav class="menu-mobile">
+            <ul>
+                <li><a href="#intro-section">Nosso trabalho</a></li>
+                <li><a href="#intro-section">Doar</a></li>
+                <li><a href="#Instituições">Instituições</a></li>
+                <li><a href="contato.html">Contato</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+
       </div>
     </div>
   </header>
@@ -68,7 +80,7 @@
     </div><br><br><br><br><br><br>
     <h2 class="inst">Instituições</h2>
     </section>
-    <section id="Instituições" class="Instituições">
+    <section id="Instituições-cards" class="Instituições">
       <a href="instituição/ptfeliz.html" class="card-link">
         <div class="card">
           <img src="img/inst/cachorro.png" alt="Instituição">
@@ -88,7 +100,7 @@
           <img src="img/inst/florescer.png" alt="Instituição">
           <h3>Instituição Florescer</h3>
           <p>Somos o Instituto Florescer, um amparo para aqueles em situação de vulnerabilidade, oferecendo acolhimento,
-            apoio e a chance de reconstruir suas vidas.</p>
+             apoio e a chance de reconstruir suas vidas.</p>
         </div>
       </a>
       <a href="instituição/recanto.html" class="card-link">
@@ -113,43 +125,45 @@
   
     if (localStorage.getItem('pixTimeOut') === 'true') {
         
-        notification.classList.add('show');
+      notification.classList.add('show');
         
-        localStorage.removeItem('pixTimeOut'); 
+      localStorage.removeItem('pixTimeOut'); 
 
-        setTimeout(() => {
-            notification.classList.remove('show');
-        }, 5000);
+      setTimeout(() => {
+          notification.classList.remove('show');
+      }, 5000);
     }
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-        const menuBtn = document.querySelector('.hamburger-btn');
-        const menu = document.querySelector('.menu-mobile');
+      // O botão agora é .hamburger-btn
+      const menuBtn = document.querySelector('.hamburger-btn');
+      // O menu a ser exibido/ocultado é .menu-mobile
+      const menu = document.querySelector('.menu-mobile');
 
-        // Função para alternar a classe 'open'
-        function toggleMenu() {
-            menu.classList.toggle('open');
-            // Opcional: Altera o ícone do botão de hambúrguer (☰) para um X
-            if (menu.classList.contains('open')) {
-                menuBtn.innerHTML = '&times;'; // Ícone X
-            } else {
-                menuBtn.innerHTML = '&#9776;'; // Ícone Hambúrguer
-            }
-        }
+      // Função para alternar a classe 'open'
+      function toggleMenu() {
+          menu.classList.toggle('open');
+          // Altera o ícone do botão de hambúrguer (☰) para um X
+          if (menu.classList.contains('open')) {
+              menuBtn.innerHTML = '&times;'; // Ícone X
+          } else {
+              menuBtn.innerHTML = '&#9776;'; // Ícone Hambúrguer
+          }
+      }
 
-        // 1. Abre/Fecha o menu ao clicar no botão
-        menuBtn.addEventListener('click', toggleMenu);
+      // 1. Abre/Fecha o menu ao clicar no botão
+      menuBtn.addEventListener('click', toggleMenu);
 
-        // 2. Fecha o menu ao clicar em qualquer link (opcional, mas recomendado)
-        const menuLinks = menu.querySelectorAll('a');
-        menuLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                // Pequeno delay para permitir que o link navegue antes de fechar
-                setTimeout(toggleMenu, 100); 
-            });
-        });
-    });
+      // 2. Fecha o menu ao clicar em qualquer link
+      const menuLinks = menu.querySelectorAll('a');
+      menuLinks.forEach(link => {
+          link.addEventListener('click', function() {
+              // Pequeno delay para permitir que o link navegue antes de fechar
+              setTimeout(toggleMenu, 100); 
+          });
+      });
+  });
 </script>
   <footer>
     <p>© 2025 Abraço Solidário. Todos os direitos reservados.</p>
